@@ -35,4 +35,12 @@ let playGame = () => {
   document.querySelector("#letterCard").innerHTML = wordInProgress.join(" ");
 }
 
+document.onkeyup = function(e){
+  if (e.keyCode >= 65 && e.keyCode <= 90) {
+    let letterGuessed = e.key.toLowerCase();
+    console.log(letterGuessed);
+  }
+
+}
+
 playGame();
