@@ -1,4 +1,4 @@
-let movies = [
+var movies = [
   "Pulp Fiction",
   "Shaft",
   "Jungle Fever",
@@ -11,36 +11,64 @@ let movies = [
 ];
 
 
-let randomWord = "";
-let wordLength = [];
-let letterCard = 0;
-let wordInProgress = [];
+var randomWord = movies[Math.floor(Math.random() * movies.length)];
+var wordLength = [];
+var letterCard = 0;
+var wordInProgress = [];
+var letterBlanks;
+var incorrectLetters = [];
+var remainingGuesses = 5;
 
 
-let playGame = () => {
 
-  let randomWord = movies[Math.floor(Math.random() * movies.length)];
-  let letters = randomWord.split("");
-  let letterBlanks = letters.length;
+
+var playGame = () => {
+  var letters = randomWord.split("");
+  letterBlanks = letters.length;
 
   console.log(randomWord);
   console.log(letters);
-  console.log("LetterBlanks", letterBlanks);
+  console.log("letterBlanks", letterBlanks);
+  console.log("Word In Progress", wordInProgress);
 
-  for (let i = 0; i < letterBlanks; i++) {
+  for (var i = 0; i < letterBlanks; i++) {
     wordInProgress.push("_");
   }
-  console.log("Word In Progress", wordInProgress);
 
   document.querySelector("#letterCard").innerHTML = wordInProgress.join(" ");
 }
 
-document.onkeyup = function(e){
-  if (e.keyCode >= 65 && e.keyCode <= 90) {
-    let letterGuessed = e.key.toLowerCase();
-    console.log(letterGuessed);
+document.querySelector("#remainingGuesses").innerHTML = remainingGuesses;
+
+
+var checkGuess = (letter) => {
+  var letterInWord = false;
+
+  for (var j = 0; j < letterBlanks; j++) {
+    if(randomWord[j] === letter) {
+      "YES"
+      console.log("yes");
+    }
+    else {
+      "No"
+      console.log("no");
+      incorrectLetters.push(letter);
+      console.log(incorrectLetters);
+    }
   }
 
+console.log("yep " + letterBlanks);
+console.log("Yup " + randomWord);
+}
+
+
+document.onkeyup = function(e){
+  if (e.keyCode >= 65 && e.keyCode <= 90) {
+    var letterGuessed = e.key.toLowerCase();
+    console.log(letterGuessed);
+    checkGuess(letterGuessed);
+
+  }
 }
 
 playGame();
