@@ -1,13 +1,13 @@
 var movies = [
-  "Pulp Fiction",
-  "Shaft",
-  "Jungle Fever",
-  "Snakes on a Plane",
-  "Unbreakable",
-  "The Incredibles",
-  "Django Unchained",
-  "Coach Carter",
-  "A Time to Kill"
+  "PULP FICTION",
+  "SHAFT",
+  "JUNGLE FEVER",
+  "SNAKES ON A PLANE",
+  "UNBREAKABLE",
+  "THE INCREDIBLES",
+  "DJANGO UNCHAINED",
+  "COACH CARTER",
+  "A TIME TO KILLS"
 ];
 
 var randomMovie = movies[Math.floor(Math.random() * movies.length)];
@@ -56,23 +56,15 @@ var checkGuess = letter => {
   } else {
     incorrectLetters.push(letter);
     remainingGuesses--;
-    console.log(incorrectLetters);
-    console.log("REMAINING GUESES " + remainingGuesses);
+
     document.querySelector("#remainingGuesses").innerHTML = remainingGuesses;
     document.querySelector("#incorrectGuesses").innerHTML = incorrectLetters;
   }
 };
 
-// console.log("no", incorrectLetters);
-//   incorrectLetters.push(letter);
-//   console.log("incorrectLetters", incorrectLetters);
-
-// console.log("yep " + letterBlanks);
-// console.log("Yup " + randomMovie);
-
 document.onkeyup = function(e) {
   if (e.keyCode >= 65 && e.keyCode <= 90) {
-    var letterGuessed = e.key.toLowerCase();
+    var letterGuessed = e.key.toUpperCase();
     // console.log(letterGuessed);
     checkGuess(letterGuessed);
   }
