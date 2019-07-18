@@ -30,7 +30,7 @@ var playGame = () => {
   for (var i = 0; i < letterBlanks; i++) {
     wordInProgress.push("_");
   }
-
+  document.querySelector("#remainingGuesses").innerHTML = remainingGuesses;
   document.querySelector("#letterCard").innerHTML = wordInProgress.join(" ");
 };
 
@@ -59,6 +59,7 @@ var checkGuess = letter => {
     console.log(incorrectLetters);
     console.log("REMAINING GUESES " + remainingGuesses);
     document.querySelector("#remainingGuesses").innerHTML = remainingGuesses;
+    document.querySelector("#incorrectGuesses").innerHTML = incorrectLetters;
   }
 };
 
